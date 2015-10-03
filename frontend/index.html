@@ -18,29 +18,28 @@
     <![endif]-->
   </head>
   <body>
+      
     <h1>超音波クイズだよ</h1>
     
-    <div id="header" class="container" style="background:red;">header</div>
-
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-3" style="background:gray;">Side1
-          </div>
-          <div class="col-sm-6" style="background:green;">
-              <form action="/text"  method="post">
-              <input type="text" name="text">
-              <input type="submit" name="submit1" value="submit1">
-              </form>
-          </div>
-          <div class="col-sm-3" style="background:orange;">Side2</div>
-        </div>
+    <div id="start">
+        <h2>ゲームスタート</h2>
     </div>
+    
+    <form >
+        <input type="text" name="ans1" id="ans1">
+        <input type="button" name="btn1" value="送信" id="btn1">
+    </form>
+    
+    <div id="quizNum"></div>
   
-  <div id="footer" class="container" style="background:blue;">footer</div>
+    <div id="next">
+      <h2>つぎの問題</h2>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/quiz.js"></script>
   </body>
 </html>
