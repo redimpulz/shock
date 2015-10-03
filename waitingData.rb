@@ -13,6 +13,11 @@ class SerialSend
 		@sp = SerialPort.new("/dev/tty.usbserial-141A", @baudRate, 8, 1, SerialPort::NONE)
 	end
 
+	def setPower(p)
+		@power = p
+
+	end
+
 	def send(data)
 		data.each{|d| @sp.putc d}
 	end
@@ -141,12 +146,10 @@ ss = SerialSend.new()
 
 loop do
 	data = gets.delete!("\n").split(",")
-	data.each{|d|
-		d = d.to_i
-	}
+	
 	p data[0]
 	p data[1]
-
+	ss.setPower((623 * data[2].to_f).to_i)
 	ss.startOutput(data[0].to_i, data[1].to_i)
 	sleep(0.005)
 	ss.stop()

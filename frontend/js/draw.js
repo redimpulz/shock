@@ -62,7 +62,8 @@ $(document).ready(function(){
 		    ctx.stroke();
 
         };
-        if(isMouseDown){ ws.send((e.offsetX -100)/4 +","+(e.offsetY-100)/4);}
+        if(isMouseDown){ ws.send((e.offsetX -100)/4 +","+(e.offsetY-100)/4+","+Math.round(pressure * 10000)/10000);}
+        console.log(Math.round(pressure * 10000)/10000);
         pushPrevPoint(e.offsetX, e.offsetY);
         return true;
     });
