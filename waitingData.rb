@@ -1,8 +1,6 @@
 # encoding: utf-8
 require 'serialport'
 
-# sp = SerialPort.new("/dev/tty.usbserial-141A",9600, 8, 1, SerialPort::NONE)
-
 class SerialSend 
 
 	def initialize()
@@ -12,7 +10,7 @@ class SerialSend
 		@frac = 50
 		@z = 150
 		@baudRate = 38400
-		@sp = SerialPort.new("/dev/tty.usbserial-142A", @baudRate, 8, 1, SerialPort::NONE)
+		@sp = SerialPort.new("/dev/tty.usbserial-00005014A", @baudRate, 8, 1, SerialPort::NONE)
 	end
 
 	def send(data)
@@ -139,25 +137,17 @@ class SerialSend
 
 end
 
-string = ARGV[0].split("")
+ss = SerialSend.new()
 
-# Serialport open
-ss = SerialSend.new
+loop do
+	data = gets.delete!("\n").split(",")
+	data.each{|d|
+		d = d.to_i
+	}
+	p data[0]
+	p data[1]
 
-# output
-string.each{|c|
-	c = c.downcase
-	ss.tegaki(c)
-}
-
-# ss.startOutput(0,0)
-# sleep 10
-# ss.stop
-
-# loop do 
-# 	puts "文字:"
-# 	chr = gets
-# 	ss.tegaki(chr)
-#
-# end
-
+	ss.startOutput(data[0].to_i, data[1].to_i)
+	sleep(0.005)
+	ss.stop()
+end
