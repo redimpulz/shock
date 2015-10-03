@@ -16,7 +16,7 @@ class SerialSend
 		@frac = 50
 		@z = 150
 		@baudRate = 38400
-		@sp = SerialPort.new("/dev/tty.usbserial-00005014A",38400, 8, 1, SerialPort::NONE)
+		@sp = SerialPort.new("/dev/tty.usbserial-00005014A", @baudRate, 8, 1, SerialPort::NONE)
 	end
 
 	def send(data)
@@ -70,7 +70,9 @@ class SerialSend
 						sleep(0.005)
 					end
 
-					startOutput(l[0].to_i/5,l[1].to_i/5)
+					# startOutput((l[0].to_i/5,l[1].to_i/5)
+					startOutput((l[0].to_i - 100)/2,(l[1].to_i - 100)/2)
+
 					preX = l[0].to_i
 					preY = l[1].to_i
 

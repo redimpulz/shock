@@ -70,7 +70,9 @@ class SerialSend
 						sleep(0.005)
 					end
 
-					startOutput(l[0].to_i/5,l[1].to_i/5)
+					# startOutput((l[0].to_i/5,l[1].to_i/5)
+					startOutput((l[0].to_i - 100)/4,(l[1].to_i - 100)/4)
+
 					preX = l[0].to_i
 					preY = l[1].to_i
 
