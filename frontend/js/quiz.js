@@ -15,6 +15,7 @@ $("#start").click(function(){
 $("#next").click(function(){
     num++;
     console.log("next");
+    $(':text[name="ans1"]').val(""); 
     $('#quizNum').empty();
     if (num==5) {
         $("#quizNum").append("<b>終了！</b>");
@@ -25,8 +26,8 @@ $("#next").click(function(){
     }
 });
 
-$("form").submit(function() {
-    if ($("input:first").val() == ans[num]) {
+$("#btn1").click(function() {
+    if ($(':text[name="ans1"]').val() == ans[num]) {
         alert("正解");
         //$("#result").append("<h3>正解！</h3>");
     } else {
