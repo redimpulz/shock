@@ -10,6 +10,7 @@ $("#start").click(function(){
     $("form").show();
     $("#quizNum").empty();
     $("#quizNum").append("<b>第1問</b>");
+    startQuiz(ans[num]);
 })
 
 $("#next").click(function(){
@@ -24,6 +25,7 @@ $("#next").click(function(){
     } else {
         $("#quizNum").append("<b>第"+(num+1)+"問</b>");
     }
+    startQuiz(ans[num]);
 });
 
 $("#btn1").click(function() {
