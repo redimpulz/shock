@@ -16,7 +16,7 @@ class SerialSend
 		@frac = 50
 		@z = 150
 		@baudRate = 38400
-		@sp = SerialPort.new("/dev/tty.usbserial-00005014A", @baudRate, 8, 1, SerialPort::NONE)
+		@sp = SerialPort.new("/dev/tty.usbserial-142A", @baudRate, 8, 1, SerialPort::NONE)
 	end
 
 	def send(data)
@@ -109,6 +109,3 @@ string.each{|c|
 #
 # end
 
-at_exit {
-	sp.close()
-}
