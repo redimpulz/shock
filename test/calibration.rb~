@@ -136,31 +136,9 @@ class SerialSend
 			puts %Q(class=[#{e.class}] message=[#{e.message}])
 		end
 	end
-
 end
-
-string = ARGV[0].split("")
 
 # Serialport open
 ss = SerialSend.new
 
-# output
-string.each{|c|
-	c = c.downcase
-	ss.tegaki(c)
-}
 
-# ss.startOutput(0,0)
-# sleep 10
-# ss.stop
-
-# loop do 
-# 	puts "文字:"
-# 	chr = gets
-# 	ss.tegaki(chr)
-#
-# end
-
-at_exit {
-	sp.close()
-}

@@ -1,11 +1,7 @@
+# encoding: utf-8
 require 'serialport'
 
 # sp = SerialPort.new("/dev/tty.usbserial-141A",9600, 8, 1, SerialPort::NONE)
-
-# senddata = [0xAA, 0x00, 0x00, 0x00, 0x00, 2, 52, 0x02, 0x6F, 0x00, 0x32]
-# stopCmd=[0x55]
-
-# senddata.each{|d| sp.putc d}
 
 class SerialSend 
 
@@ -37,7 +33,17 @@ class SerialSend
 	end
 
 	def startOutput(x,y)
-		send( [0xAA,encodePos(x)[:h],encodePos(x)[:l],encodePos(y)[:h],encodePos(y)[:l],encodePos(@z)[:h],encodePos(@z)[:l],encode(@power)[:h],encode(@power)[:l],encode(@frac)[:h],encode(@frac)[:l]])
+		send( [0xAA,
+		 encodePos(x)[:h],
+		 encodePos(x)[:l],
+		 encodePos(y)[:h],
+		 encodePos(y)[:l],
+		 encodePos(@z)[:h],
+		 encodePos(@z)[:l],
+		 encode(@power)[:h],
+		 encode(@power)[:l],
+		 encode(@frac)[:h],
+		 encode(@frac)[:l]] )
 	end
 
 	def stop()
@@ -53,6 +59,7 @@ class SerialSend
 			File.open(file) do |file|
 				preX = 0
 				preY = 0
+
 				file.each_line do |l|
 					l.delete!("{")
 					l.delete!("}")
@@ -61,8 +68,10 @@ class SerialSend
 					l.delete!("\n")
 					l = l.split(",")
 					l.delete("")
+
 					p l
-					if ((preX - l[0].to_i).abs > 10) || ((preY - l[1].to_i).abs >10) then
+
+					if ((preX - l[0].to_i).abs > 10) || ((preY - l[1].to_i).abs > 10) then
 						stop()
 						p 1
 						sleep(0.5)
@@ -71,12 +80,10 @@ class SerialSend
 					end
 
 					# startOutput((l[0].to_i/5,l[1].to_i/5)
-					startOutput((l[0].to_i - 100)/2,(l[1].to_i - 100)/2)
+					startOutput((l[0].to_i - 100)/4,(l[1].to_i - 100)/4)
 
 					preX = l[0].to_i
 					preY = l[1].to_i
-
-
 				end
 				stop()
 			end
@@ -87,20 +94,22 @@ class SerialSend
 		end
 	end
 
-
 end
 
 string = ARGV[0].split("")
 
+# Serialport open
 ss = SerialSend.new
+
+# output
+string.each{|c|
+	c = c.downcase
+	ss.tegaki(c)
+}
 
 # ss.startOutput(0,0)
 # sleep 10
 # ss.stop
-
-string.each{|c|
-	ss.tegaki(c)
-}
 
 # loop do 
 # 	puts "文字:"
