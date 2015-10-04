@@ -3,7 +3,7 @@ function send() {
     }
 
     var host = window.document.location.host.replace(/:.*/, '');
-    var ws = new WebSocket('ws://' + host + ':3000');
+    var ws = new WebSocket('ws://' + host + ':8080');
     ws.onmessage = function(event) {
         document.getElementById("messages").innerHTML += "<div>" + JSON.parse(event.data) + "</div>";
         console.log(JSON.parse(event.data));

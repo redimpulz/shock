@@ -11,6 +11,19 @@ app.use(express.static('../frontend'));
 app.use(bodyParser.urlencoded({ extended: false }));
 var server = http.createServer(app);
 var wss = new WebSocketServer({server:server});
+
+
+
+app.post('/text', function(req, res) {
+    var text = req.body.text;
+    close.log(text)
+    exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
+        /* some process */
+        console.log(stdout);
+    });
+    res.redirect("/");
+
+});
  
 //Websocket接続を保存しておく
 var connections = [];
@@ -39,5 +52,5 @@ function broadcast(message) {
         con.send(message);
     });
 };
- 
-server.listen(3000);
+
+server.listen(8080);

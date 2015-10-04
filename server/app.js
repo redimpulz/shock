@@ -14,7 +14,7 @@ app.post('/text', function(req, res) {
     exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
         /* some process */
         console.log(stdout);
-        res.send('end');
+        res.redirect('/');
     });
  
 
