@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #canvasWrapper {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 1px #000 solid;
+    }
+    
+    #testCanvas {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: 0;
+    }
+    
+    #tmpTestCanvas {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>遠隔手書き</h1>
+
+    <div id="canvasWrapper">
+        <canvas width="200" height="200" id="testCanvas"></canvas>
+    </div>
+
+    <object id="wtPlugin" type="application/x-wacomtabletplugin">
+        <param name="onload" value="pluginLoaded" />
+    </object>
+
+    <form action="/text" method="post">
+        <input type="text" name="text" id="ans1">
+        <input type="submit" value="送信する">
+    </form>
+
+
+   <!--  <strong>ws chat</strong>
+    <br>
+    <input type="text" id="msg" />
+    <input type="button" value="send" onclick="send()" />
+    <br>
+    <hr>
+    <div id="messages" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/draw.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
