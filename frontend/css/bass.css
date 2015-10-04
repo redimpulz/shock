@@ -45,7 +45,7 @@ body{
     margin:25px 15%;
 
 }
-#quizNum,#ans_crct,#last_msg{
+#quizNum,#ans_crct,#last_msg,#first p{
   color:#333;
   text-align: center;
   font-size: 30px;
@@ -91,7 +91,20 @@ body{
 .modal-default-button {
   float: right;
 }
+#first{
+  text-align: center;
+  margin:2% 0 5%;
+  max-height: 50vh;
+}
+#first p{
+  padding:0;
+  margin: 10px;
 
+}
+#first img{
+  max-height:40vh;
+  width:auto;
+}
 /*
  * the following styles are auto-applied to elements with
  * v-transition="modal" when their visiblity is toggled

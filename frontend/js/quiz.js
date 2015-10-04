@@ -71,6 +71,10 @@ $("#ans input").click(function() {
   return ++q_num;
 });
 
+$('#reload').click(function() {
+  return location.reload();
+});
+
 $('#start,#start_next').click(function() {
   if (q_num > q_num_max) {
     $('#quizNum').hide();
@@ -79,6 +83,7 @@ $('#start,#start_next').click(function() {
     $('#last_msg').html(q_num_max + 1 + "問中" + correct + "正解");
     return;
   }
+  $("#first").hide();
   $("#ans_aft").hide();
   $("#quizNum").show();
   num = 0;
