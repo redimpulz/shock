@@ -11,6 +11,7 @@
         width: 200px;
         height: 200px;
         border: 1px #000 solid;
+        margin: 0 auto;
     }
     
     #testCanvas {
@@ -28,11 +29,16 @@
         top: 0;
         left: 0;
     }
+
+    #textbox {
+        text-align: center;
+        
+    }
     </style>
 </head>
 
 <body>
-    <h1>遠隔手書き</h1>
+    <h1 id="textbox">遠隔手書き</h1>
 
     <div id="canvasWrapper">
         <canvas width="200" height="200" id="testCanvas"></canvas>
@@ -42,9 +48,9 @@
         <param name="onload" value="pluginLoaded" />
     </object>
 
-    <form action="/text" method="post">
-        <input type="text" name="text" id="ans1">
-        <input type="submit" value="送信する">
+    <form action="/text2" method="post" id="textbox">
+        <input type="text" name="text" id="textbox">
+        <input type="submit" value="送信する" id="textbox">
     </form>
 
 

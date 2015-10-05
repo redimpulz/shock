@@ -14,16 +14,16 @@ var wss = new WebSocketServer({server:server});
 
 
 
-app.post('/text', function(req, res) {
-    var text = req.body.text;
-    close.log(text)
-    exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
-        /* some process */
-        console.log(stdout);
-    });
-    res.redirect("/");
+// app.post('/text', function(req, res) {
+//     var text = req.body.text;
+//     close.log(text)
+//     exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
+//         /* some process */
+//         console.log(stdout);
+//     });
+//     res.redirect("/");
 
-});
+// });
  
 //Websocket接続を保存しておく
 var connections = [];

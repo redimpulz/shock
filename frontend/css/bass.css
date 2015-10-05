@@ -42,8 +42,12 @@ body{
 }
 #ans .btn{
   display:inline-block;
-    margin:25px 15%;
+    margin:25px 7%;
 
+}
+#ans>div{
+  margin: 0 auto;
+  /*display: table;*/
 }
 #quizNum,#ans_crct,#last_msg,#first p{
   color:#333;

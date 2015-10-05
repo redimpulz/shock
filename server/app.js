@@ -10,13 +10,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/text', function(req, res) {
     var text = req.body.text;
-    
+    console.log(req.body);
     exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
         /* some process */
         console.log(stdout);
-        res.redirect('/');
+        
     });
- 
+ res.redirect('/');
+
+});
+
+app.post('/text2', function(req, res) {
+    var text = req.body.text;
+    console.log(text);
+    exec('ruby ../serialSend.rb' + ' ' + text , function(err, stdout, stderr) {
+        /* some process */
+        console.log(stdout);
+        
+    });
+ res.redirect('/websk.html');
 
 });
 
